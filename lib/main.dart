@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+TextEditingController controller =TextEditingController();
   String message = '';
   Color themeColor = Colors.red;
   @override
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   height: 300.0,
                   color: themeColor,
                   child: Center(child: Text(message,style: TextStyle(
-                    color:themeColor,
+                    color:Colors.white,
                     fontSize:24.0,
                     fontFamily:'cursive',
 
@@ -48,6 +49,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  controller: controller,
                   maxLength: 30,
                   onChanged: (String newValue){
                     // print(newValue);
@@ -66,7 +68,10 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: RaisedButton(
-                  onPressed: (){},
+                  
+                  onPressed: (){
+                    controller.clear();
+                  },
                   color: themeColor,
                   child: Text('Clear the text'),
                 ),
